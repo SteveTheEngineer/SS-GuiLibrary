@@ -25,14 +25,6 @@ public class GUIEventListener implements Listener {
             InventoryGUILibrary.getInstance().getPlayerGuis().remove(event.getPlayer().getUniqueId());
         }
     }
-    
-    @EventHandler
-    public void onInventoryOpen(InventoryOpenEvent event) {
-        if(InventoryGUILibrary.getInstance().getPlayerGuis().containsKey(event.getPlayer().getUniqueId())) {
-            InventoryGUILibrary.getInstance().getPlayerGuis().get(event.getPlayer().getUniqueId()).handleClosing(event.getInventory());
-            InventoryGUILibrary.getInstance().getPlayerGuis().remove(event.getPlayer().getUniqueId());
-        }
-    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
