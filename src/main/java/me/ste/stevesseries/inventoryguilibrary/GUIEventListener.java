@@ -95,11 +95,4 @@ public class GUIEventListener implements Listener {
             }
         }
     }
-
-    @EventHandler
-    public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
-        Bukkit.getScheduler().runTask(InventoryGUILibrary.getPlugin(InventoryGUILibrary.class), () -> {
-            GUIManager.open(event.getPlayer(), new TestGUI());
-        });
-    }
 }
