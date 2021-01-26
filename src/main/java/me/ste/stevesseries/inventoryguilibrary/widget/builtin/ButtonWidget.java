@@ -38,6 +38,7 @@ public abstract class ButtonWidget extends Widget {
 
     /**
      * Called whenever the button is clicked
+     * @param type click type
      */
-    protected abstract void click();
+    protected abstract void click(ClickType type);
 }
