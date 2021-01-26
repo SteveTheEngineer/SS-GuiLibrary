@@ -19,7 +19,7 @@ public abstract class PaginationBarWidget extends Widget {
         this.backgroundItem = backgroundItem;
 
         PaginationBarWidget self = this;
-        this.addChild(new ButtonWidget(this.getRealX(), this.getRealY(), 1, this.getHeight()) {
+        this.addChild(new ButtonWidget(0, 0, 1, this.getHeight()) {
             @Override
             protected ItemStack getItem() {
                 return self.getPreviousPageItem(self.getPage() + 1, Math.max(1, self.getPages()));
@@ -34,7 +34,7 @@ public abstract class PaginationBarWidget extends Widget {
                 }
             }
         });
-        this.addChild(new ButtonWidget(this.getRealX() + this.getWidth() - 1, this.getRealY(), 1, this.getHeight()) {
+        this.addChild(new ButtonWidget(this.getWidth() - 1, 0, 1, this.getHeight()) {
             @Override
             protected ItemStack getItem() {
                 return self.getNextPageItem(self.getPage() + 1, Math.max(1, self.getPages()));

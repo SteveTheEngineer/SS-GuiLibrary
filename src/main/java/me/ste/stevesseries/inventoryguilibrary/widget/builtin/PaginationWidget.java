@@ -4,6 +4,7 @@ import me.ste.stevesseries.inventoryguilibrary.inventory.GridInventory;
 import me.ste.stevesseries.inventoryguilibrary.widget.Widget;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class PaginationWidget extends Widget {
     private int page;
     private int pages;
 
-    private List<Widget> items;
+    private List<Widget> items = Collections.emptyList();
 
     /**
      * @param backgroundItem the item used for the background. null for no background
