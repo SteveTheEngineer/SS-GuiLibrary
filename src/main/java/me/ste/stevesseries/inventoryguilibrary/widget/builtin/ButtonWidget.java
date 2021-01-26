@@ -25,7 +25,7 @@ public abstract class ButtonWidget extends Widget {
         }
 
         if(GridInventory.isInside(x, y, this.getRealX(), this.getRealY(), this.getWidth(), this.getHeight())) {
-            this.click();
+            this.click(type);
             this.rerender();
         }
     }
