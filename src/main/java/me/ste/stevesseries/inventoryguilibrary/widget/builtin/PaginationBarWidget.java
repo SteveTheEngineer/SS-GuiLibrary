@@ -2,6 +2,7 @@ package me.ste.stevesseries.inventoryguilibrary.widget.builtin;
 
 import me.ste.stevesseries.inventoryguilibrary.inventory.GridInventory;
 import me.ste.stevesseries.inventoryguilibrary.widget.Widget;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -25,7 +26,7 @@ public abstract class PaginationBarWidget extends Widget {
             }
 
             @Override
-            protected void click() {
+            protected void click(ClickType type) {
                 int page = self.getPage();
                 if(page > 0) {
                     self.setPage(page - 1);
@@ -40,7 +41,7 @@ public abstract class PaginationBarWidget extends Widget {
             }
 
             @Override
-            protected void click() {
+            protected void click(ClickType type) {
                 int page = self.getPage();
                 if(page < self.getPages() - 1) {
                     self.setPage(page + 1);
