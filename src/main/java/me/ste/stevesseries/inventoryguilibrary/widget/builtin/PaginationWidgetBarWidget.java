@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Same as {@link PaginationBarWidget}, but it retrieves the page information from the specified {@link PaginationWidget}
  */
-public abstract class PaginationWidgetBarWidget extends PaginationWidget {
+public abstract class PaginationWidgetBarWidget extends PaginationBarWidget {
     private final PaginationWidget paginationWidget;
 
     /**
