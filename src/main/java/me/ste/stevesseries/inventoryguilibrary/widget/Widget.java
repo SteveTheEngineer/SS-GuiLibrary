@@ -176,7 +176,7 @@ public abstract class Widget {
      */
     public final void recurse(Consumer<Widget> modifier) {
         modifier.accept(this);
-        for(Widget child : this.children) {
+        for(Widget child : new ArrayList<>(this.children)) {
             child.recurse(modifier);
         }
     }
