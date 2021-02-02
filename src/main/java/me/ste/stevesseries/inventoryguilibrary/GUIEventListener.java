@@ -54,7 +54,7 @@ public class GUIEventListener implements Listener {
                 ClickType click = event.getClick();
                 Bukkit.getScheduler().runTask(InventoryGUILibrary.getPlugin(InventoryGUILibrary.class), () -> gui.recurse(widget -> {
                     GridInventory grid = new GridInventory(player.getOpenInventory().getTopInventory(), gui.getWidth(), gui.getHeight());
-                    if (GridInventory.isInside(position[0], position[1], widget.getX(), widget.getY(), widget.getWidth(), widget.getHeight())) {
+                    if (GridInventory.isInside(position[0], position[1], widget.getRealX(), widget.getRealY(), widget.getWidth(), widget.getHeight())) {
                         if(click == ClickType.NUMBER_KEY) {
                             widget.onNumberKey(position[0], position[1], event.getHotbarButton(), grid);
                         } else {
@@ -81,7 +81,7 @@ public class GUIEventListener implements Listener {
                             Map<int[], ItemStack> newItems = new HashMap<>();
                             for(Map.Entry<Integer, ItemStack> entry2 : event.getNewItems().entrySet()) {
                                 int[] position = GridInventory.getPositionByIndex(entry2.getKey(), gui.getWidth());
-                                if(GridInventory.isInside(position[0], position[1], widget.getX(), widget.getY(), widget.getWidth(), widget.getHeight())) {
+                                if(GridInventory.isInside(position[0], position[1], widget.getRealX(), widget.getRealY(), widget.getWidth(), widget.getHeight())) {
                                     newItems.put(position, entry2.getValue());
                                 }
                             }
