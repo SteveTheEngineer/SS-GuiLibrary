@@ -10,25 +10,19 @@ import java.util.*
  */
 object PlayerGUIS : Iterable<MutableMap.MutableEntry<UUID, Widget>> {
     /**
-     * Open a Steve's Series | Inventory GUI Library GUI
-     * @param gui GUI to open
+     * The currently open Steve's Series | Inventory GUI Library GUI
      */
-    fun Player.openGui(gui: Widget) {
-        PlayerGUIS[this] = gui
-    }
-
-    /**
-     * Get the currently open Steve's Series | Inventory GUI Library GUI
-     * @return the gui
-     */
-    fun Player.getGui(): Widget? = PlayerGUIS[this]
-
-    /**
-     * Re-render the currently open GUI
-     */
-    fun Player.rerenderGui() {
-        rerender(this)
-    }
+    var Player.gui: Widget?
+        get() = PlayerGUIS[this]
+        set(value) {
+            if (value != null) {
+                PlayerGUIS[this] = value
+            } else {
+                if (PlayerGUIS[this] != null) {
+                    this.closeInventory()
+                }
+            }
+        }
 
     /**
      * All currently open GUIs. The key is the player unique id

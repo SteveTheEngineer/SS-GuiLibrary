@@ -1,7 +1,6 @@
 package me.ste.stevesseries.inventoryguilibrary.widget
 
 import me.ste.stevesseries.inventoryguilibrary.PlayerGUIS
-import me.ste.stevesseries.inventoryguilibrary.PlayerGUIS.openGui
 import me.ste.stevesseries.inventoryguilibrary.inventory.ItemCanvas
 import me.ste.stevesseries.inventoryguilibrary.inventory.Position2I
 import org.bukkit.entity.Player
@@ -75,7 +74,7 @@ abstract class Widget(
     /**
      * Re-render the root widget. Must be called whenever something has changed and needs updating on the screen
      */
-    protected fun rerender() {
+    fun rerender() {
         PlayerGUIS.rerender(this.player)
     }
 

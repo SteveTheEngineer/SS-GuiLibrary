@@ -31,6 +31,7 @@ class Pagination(x: Int, y: Int, width: Int, height: Int, private val itemsSuppl
             widget.y = position.y
             widget.width = 1
             widget.height = 1
+            widget.player = this.player
             this += widget
         }
     }
