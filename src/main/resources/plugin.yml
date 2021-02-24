@@ -2,5 +2,6 @@ name: SS-InventoryGUILibrary
 version: @version@
 main: me.ste.stevesseries.inventoryguilibrary.InventoryGUILibrary
 api-version: 1.16
-authors: [ SteveTheEngineer ]
-description: Steve's Series | Inventory GUI Library. A library that introduces the ability to manage and create custom inventory GUIs
+authors: [SteveTheEngineer]
+depend: [SS-Kotlin]
+description: A library that introduces the ability to manage and create custom inventory GUIs
