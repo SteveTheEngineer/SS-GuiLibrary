@@ -21,6 +21,24 @@ class ComponentCanvas(width: Int, height: Int) : ItemCanvas(width, height) {
             return
         }
 
+        // Validate width and height
+        val minWidth = component.getMinWidth()
+        val minHeight = component.getMinHeight()
+
+        if (minWidth < 0) {
+            throw IllegalArgumentException("The minimum width of a component cannot be negative.")
+        }
+        if (minHeight < 0 ){
+            throw IllegalArgumentException("The minimum height of a component cannot be negative.")
+        }
+
+        if (width < minWidth) {
+            throw IllegalArgumentException("The width ($width) cannot be less than the component's minimum width ($minWidth).")
+        }
+        if (height < minHeight) {
+            throw IllegalArgumentException("The height ($height) cannot be less than the component's minimum height ($minHeight).")
+        }
+
         val endX = startX + width - 1
         val endY = startY + height - 1
 

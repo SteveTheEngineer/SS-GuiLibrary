@@ -30,6 +30,16 @@ abstract class GuiComponent {
      */
     open fun destroy() {}
 
+    /**
+     * @return the minimum width of the component.
+     */
+    open fun getMinWidth() = 1
+
+    /**
+     * @return the minimum height of the component.
+     */
+    open fun getMinHeight() = 1
+
     // Internal logic
     /**
      * Renders the component to the [canvas].
