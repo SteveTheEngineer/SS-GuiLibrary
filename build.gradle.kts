@@ -31,6 +31,22 @@ allprojects {
     dependencies {
         compileOnly(kotlin("stdlib"))
     }
+
+    publishing {
+        repositories {
+            repositories {
+                maven {
+                    name = "SteenePublic"
+                    url = uri("https://mvn-public.steenesvc.cf/releases")
+
+                    credentials {
+                        username = System.getenv("REPO_USERNAME")
+                        password = System.getenv("REPO_PASSWORD")
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -57,17 +73,6 @@ pluginDescription {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "SteenePublic"
-            url = uri("https://mvn-public.steenesvc.cf/releases")
-
-            credentials {
-                username = System.getenv("REPO_USERNAME")
-                password = System.getenv("REPO_PASSWORD")
-            }
-        }
-    }
     publications {
         create<MavenPublication>("plugin") {
             artifactId = "guilib"
