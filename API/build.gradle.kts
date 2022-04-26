@@ -9,6 +9,8 @@ publishing {
     publications {
         create<MavenPublication>("api") {
             artifactId = "guilib-api"
+
+            from(components.getByName("java"))
         }
     }
 }

@@ -76,6 +76,8 @@ publishing {
     publications {
         create<MavenPublication>("plugin") {
             artifactId = "guilib"
+
+            from(components.getByName("java"))
         }
     }
 }
