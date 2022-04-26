@@ -1,53 +1,76 @@
-import org.apache.tools.ant.filters.ReplaceTokens
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
-    kotlin("jvm") version "1.4.30"
-    id("org.jetbrains.dokka") version "1.4.20"
-    id("maven-publish")
-    id("java-library")
+    kotlin("jvm") version "1.6.20"
+    id("me.ste.stevesseries.bukkitgradle") version "1.2"
+    `maven-publish`
 }
 
-group = "me.ste.stevesseries"
-version = System.getenv("BUILD_NUMBER") ?: "0"
+group = "me.ste.stevesseries.guilib"
+version = "0.0.0-mc1.18.2"
+description = "A Spigot library plugin for building and management of interactive menus (GUIs)."
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
 
 repositories {
-    mavenCentral()
-    jcenter()
-    maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven(url = "https://oss.sonatype.org/content/groups/public/")
+    maven("https://mvn-public.steenesvc.cf/releases")
+}
+
+allprojects {
+    apply<KotlinPluginWrapper>()
+    apply<MavenPublishPlugin>()
+
+    repositories {
+        mavenCentral()
+        maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
+    }
+
+    dependencies {
+        compileOnly(kotlin("stdlib"))
+    }
 }
 
 dependencies {
-    implementation("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
+    softDepend("me.ste.stevesseries.kotlin:kotlin:1.6.20")
+
+    api(project(":API"))
 }
 
-tasks.processResources {
-    from(sourceSets.main.get().resources.srcDirs) {
-        include("plugin.yml")
-        filter<ReplaceTokens>("tokens" to hashMapOf("version" to version))
+tasks {
+    jar {
+        from(project(":API").sourceSets.main.get().output)
     }
+}
+
+runServer {
+    downloadUri.set("https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/302/downloads/paper-1.18.2-302.jar")
+    serverArgs.add("nogui")
+}
+
+pluginDescription {
+    mainClass.set("me.ste.stevesseries.guilib.GuiLibraryPlugin")
+    apiVersion.set("1.18")
+    authors.add("SteveTheEngineer")
 }
 
 publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            artifactId = "inventoryguilibrary"
-
-            from(components["java"])
-        }
-    }
     repositories {
         maven {
-            url = uri("https://repo.stev.gq/repository/generic/")
+            name = "SteenePublic"
+            url = uri("https://mvn-public.steenesvc.cf/releases")
 
             credentials {
-                username = System.getenv("NEXUS_USER")
-                password = System.getenv("NEXUS_PASS")
+                username = System.getenv("REPO_USERNAME")
+                password = System.getenv("REPO_PASSWORD")
             }
         }
     }
-}
-
-java {
-    withSourcesJar()
+    publications {
+        create<MavenPublication>("plugin") {
+            artifactId = "guilib"
+        }
+    }
 }

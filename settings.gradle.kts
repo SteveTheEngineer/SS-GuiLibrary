@@ -1,7 +1,10 @@
+rootProject.name = "SS-GuiLibrary"
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        jcenter()
+        maven("https://mvn-public.steenesvc.cf/releases")
     }
 }
-rootProject.name = "SS-InventoryGUILibrary"
+
+include("API")
