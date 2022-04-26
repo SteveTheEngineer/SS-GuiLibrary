@@ -1,4 +1,4 @@
-group = "me.ste.stevesseries"
+group = "me.ste.stevesseries.guilib"
 version = rootProject.version
 
 dependencies {
