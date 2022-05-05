@@ -8,7 +8,8 @@ repositories {
 dependencies {
     implementation("me.ste.stevesseries.guilib:guilib-api:0.0.0-mc1.18.2")
     
-    // SS-BukkitGradle. TODO: NOT TESTED!
-    // depend("me.ste.stevesseries.guilib:guilib-api:0.0.0-mc1.18.2")
+    // SS-BukkitGradle
+    // compileOnly("me.ste.stevesseries.guilib:guilib-api:0.0.0-mc1.18.2")
+    // dependRuntime("me.ste.stevesseries.guilib:guilib:0.0.0-mc1.18.2")
 }
 ```
