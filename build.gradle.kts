@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
-    kotlin("jvm") version "1.6.20"
-    id("me.ste.stevesseries.bukkitgradle") version "1.2"
+    kotlin("jvm") version "1.8.0"
+    id("com.github.SteveTheEngineer.SS-BukkitGradle") version "1.4"
     `maven-publish`
 }
 
@@ -15,7 +15,7 @@ java {
 }
 
 repositories {
-    maven("https://mvn-public.steenesvc.cf/releases")
+    maven("https://jitpack.io")
 }
 
 allprojects {
@@ -31,26 +31,10 @@ allprojects {
     dependencies {
         compileOnly(kotlin("stdlib"))
     }
-
-    publishing {
-        repositories {
-            repositories {
-                maven {
-                    name = "SteenePublic"
-                    url = uri("https://mvn-public.steenesvc.cf/releases")
-
-                    credentials {
-                        username = System.getenv("REPO_USERNAME")
-                        password = System.getenv("REPO_PASSWORD")
-                    }
-                }
-            }
-        }
-    }
 }
 
 dependencies {
-    softDepend("me.ste.stevesseries.kotlin:kotlin:1.6.20")
+    softDepend("com.github.SteveTheEngineer:SS-Kotlin:1.8.0")
 
     api(project(":API"))
 }
@@ -62,7 +46,7 @@ tasks {
 }
 
 runServer {
-    downloadUri.set("https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/302/downloads/paper-1.18.2-302.jar")
+    downloadUri.set("https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar")
     serverArgs.add("nogui")
 }
 
