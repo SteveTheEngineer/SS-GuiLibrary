@@ -2,14 +2,14 @@
 Maven:
 ```kts
 repositories {
-    maven("https://mvn-public.steenesvc.cf/releases")
+    maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("me.ste.stevesseries.guilib:guilib-api:0.0.0-mc1.18.2")
+    implementation("com.github.SteveTheEngineer.SS-GuiLibrary:guilib-api:0.0.0-mc1.18.2")
     
     // SS-BukkitGradle
-    // compileOnly("me.ste.stevesseries.guilib:guilib-api:0.0.0-mc1.18.2")
-    // dependRuntime("me.ste.stevesseries.guilib:guilib:0.0.0-mc1.18.2")
+    // compileOnly("com.github.SteveTheEngineer.SS-GuiLibrary:guilib-api:0.0.0-mc1.18.2")
+    // dependRuntime("com.github.SteveTheEngineer.SS-GuiLibrary:guilib:0.0.0-mc1.18.2")
 }
 ```
