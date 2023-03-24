@@ -2,7 +2,7 @@ group = "me.ste.stevesseries.guilib"
 version = rootProject.version
 
 dependencies {
-    api("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+    api("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
 }
 
 java {

@@ -4,6 +4,7 @@ import me.ste.stevesseries.guilib.api.component.GuiComponent
 import me.ste.stevesseries.guilib.api.gui.GuiController
 import me.ste.stevesseries.guilib.api.gui.inventory.ComponentGui
 import org.bukkit.entity.Player
+import org.bukkit.plugin.Plugin
 import java.util.UUID
 
 interface GuiManager {
@@ -20,6 +21,8 @@ interface GuiManager {
             this.manager = manager
         }
     }
+
+    fun getPlugin(): Plugin
 
     /**
      * Opens the GUI for the provided [player].

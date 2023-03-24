@@ -26,4 +26,14 @@ enum class GridInventorySize(
         } else {
             server.createInventory(owner, this.width * this.height, title)
         }
+
+    companion object {
+        fun fromInventoryType(type: InventoryType, size: Int): GridInventorySize? {
+            if (type == InventoryType.CHEST) {
+                return values().find { it.width == 9 && it.height == size / it.width }
+            }
+
+            return values().find { it.inventoryType == type }
+        }
+    }
 }

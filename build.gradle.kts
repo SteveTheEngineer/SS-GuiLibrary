@@ -1,26 +1,28 @@
+import me.ste.stevesseries.bukkitgradle.extension.description.LoadingPhase
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
     kotlin("jvm") version "1.8.0"
-    id("com.github.SteveTheEngineer.SS-BukkitGradle") version "1.4"
+    id("com.github.SteveTheEngineer.SS-BukkitGradle") version "1.6"
     `maven-publish`
 }
 
 group = "me.ste.stevesseries.guilib"
-version = "0.0.0-mc1.18.2"
+version = "0.1.0-mc1.19.3"
 description = "A Spigot library plugin for building and management of interactive menus (GUIs)."
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-}
-
 repositories {
+    mavenLocal()
     maven("https://jitpack.io")
 }
 
 allprojects {
     apply<KotlinPluginWrapper>()
     apply<MavenPublishPlugin>()
+
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+    }
 
     repositories {
         mavenCentral()
@@ -41,7 +43,10 @@ dependencies {
 
 tasks {
     jar {
-        from(project(":API").sourceSets.main.get().output)
+        from(
+            project(":API").sourceSets.main.get().output,
+            project(":Compat").sourceSets.main.get().output
+        )
     }
 }
 
@@ -52,7 +57,7 @@ runServer {
 
 pluginDescription {
     mainClass.set("me.ste.stevesseries.guilib.GuiLibraryPlugin")
-    apiVersion.set("1.18")
+    apiVersion.set("1.16")
     authors.add("SteveTheEngineer")
 }
 
@@ -65,3 +70,5 @@ publishing {
         }
     }
 }
+
+// TODO the old plugin name was different from the current one. fix somehow!

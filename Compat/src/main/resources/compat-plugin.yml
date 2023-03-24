@@ -1,0 +1,6 @@
+name: SS-InventoryGUILibrary
+main: me.ste.stevesseries.guilib.compat.CompatPlugin
+version: 11
+description: Dummy compatibility plugin for legacy support.
+depend: [SS-GuiLibrary]
+api-version: 1.16
